@@ -1,0 +1,20 @@
+Python text based video game:  // This is gonna be like Bitburner . . .   No not a ripoff you nonce.
+
+plan:
+
+Novel Style: (try to add some type of music)
+RPG: have items with stats, probably use google sheets or something
+Text based: gonna be text based to start off with, will go back and add text boxes and stuff after a while.
+
+AFTER A WHILE:
+import pygame
+make an actual window that isnt command prompt
+add music to that
+make a border, like actually
+
+OOOOO
+new plan:
+make a website for it, github pages.
+
+have a download liiiinnnkk??? poggers
+
