@@ -1,88 +1,42 @@
+import pygame # imports pygame
 
-# import sys module 
-import pygame 
-import sys 
-  
-  
-# pygame.init() will initialize all 
-# imported module 
-pygame.init() 
-  
-clock = pygame.time.Clock() 
-  
-# it will display on screen 
-screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE) 
-  
-# basic font for user typed 
-base_font = pygame.font.Font(None, 32) 
-user_text = '' 
-  
-# create rectangle 
-input_rect = pygame.Rect(200, 200, 140, 32) 
-  
-# color_active stores color(lightskyblue3) which 
-# gets active when input box is clicked by user 
-color_active = pygame.Color('lightskyblue3') 
-  
-# color_passive store color(chartreuse4) which is 
-# color of input box. 
-color_passive = pygame.Color('chartreuse4') 
-color = color_passive 
-  
-active = False
-  
-while True: 
-    for event in pygame.event.get(): 
-  
-      # if user types QUIT then the screen will close 
-        if event.type == pygame.QUIT: 
-            pygame.quit() 
-            sys.exit() 
-  
-        if event.type == pygame.MOUSEBUTTONDOWN: 
-            if input_rect.collidepoint(event.pos): 
-                active = True
-            else: 
-                active = False
-  
-        if event.type == pygame.KEYDOWN: 
-  
-            # Check for backspace 
-            if event.key == pygame.K_BACKSPACE: 
-  
-                # get text input from 0 to -1 i.e. end. 
-                user_text = user_text[:-1] 
-  
-            # Unicode standard is used for string 
-            # formation 
-            else: 
-                user_text += event.unicode
-      
-    # it will set background color of screen 
-    screen.fill((255, 255, 255)) 
-  
-    if active: 
-        color = color_active 
-    else: 
-        color = color_passive 
-          
-    # draw rectangle and argument passed which should 
-    # be on screen 
-    pygame.draw.rect(screen, color, input_rect) 
-  
-    text_surface = base_font.render(user_text, True, (255, 255, 255)) 
-      
-    # render at position stated in arguments 
-    screen.blit(text_surface, (input_rect.x+5, input_rect.y+5)) 
-      
-    # set width of textfield so that text cannot get 
-    # outside of user's text input 
-    input_rect.w = max(100, text_surface.get_width()+10) 
-      
-    # display.flip() will update only a portion of the 
-    # screen to updated, not full area 
-    pygame.display.flip() 
-      
-    # clock.tick(60) means that for every second at most 
-    # 60 frames should be passed. 
-    clock.tick(60) 
+pygame.init() # initializes pygame
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE) # MAKES GAME WINDOW, sets dimensions and weather its resizable or not
+
+player = pygame.Rect((300, 250, 50, 50)) # this is the player, pygame.Rect() creates a rectangle, but it takes FOUR ARGUMENTS
+
+# FIRST TWO, ARE THE X and Y CO-ORDINATES
+# SECOND TWO, ARE THE WIDTH AND HEIGHT
+
+running = True
+
+while running:     # GAME LOOP
+    screen.fill((0, 0, 0))
+
+    pygame.draw.rect(screen, (255, 0, 0), player) # you're drawing the rectangle to the SCREEN variable, then asigning RGB color codes to it
+    # Also apparently this rect has to be lower case, for whatever fucking reason
+
+    key = pygame.key.get_pressed() # this assigns the key variable, and looks for the key that is being pressed
+    if key[pygame.K_a] == True:          # If key, inside pygame, is the A key being pressed
+        player.move_ip(-1, 0) # IP stands for In Place   -1, 0,   YOU ARE SUBTRACTING FROM THE X COORDINATE, BUT LEAVING THE Y COORDINATE ALONE
+    elif key[pygame.K_d] == True:      
+        player.move_ip(1, 0)      # This time moves positive X coordinate, also, ELSE IF, ELIF
+    elif key[pygame.K_w] == True:         
+        player.move_ip(0, -1)
+    elif key[pygame.K_s] == True:          # THESE TWO, opposite, you are checking the Y co ordinates  
+        player.move_ip(0, 1)        # POSITIVE MOVES DOWN, NEGATIVE MOVES UP
+
+
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:    # EVENT HANDLER
+            running = False
+
+    
+    pygame.display.update()
+
+pygame.quit()

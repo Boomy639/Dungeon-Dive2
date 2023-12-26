@@ -344,4 +344,6 @@ html, body {
     position: relative;
     text-align: center;
     filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+    font-size: 2rem;
+    top: 100px;
 }
