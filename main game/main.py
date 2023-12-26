@@ -4,9 +4,11 @@ pygame.init() # initializes pygame
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+clock = pygame.time.Clock()    # clock function, how many times the screen is refreshed per second
+fps = 120 # traditional fps values, frames per second, right now, its 120
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE) # MAKES GAME WINDOW, sets dimensions and weather its resizable or not
-
+pygame.display.set_caption('Dungeon Dive')
 player = pygame.Rect((300, 250, 50, 50)) # this is the player, pygame.Rect() creates a rectangle, but it takes FOUR ARGUMENTS
 
 # FIRST TWO, ARE THE X and Y CO-ORDINATES
@@ -33,10 +35,11 @@ while running:     # GAME LOOP
 
 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:    # EVENT HANDLER
+        if event.type == pygame.QUIT:    # EVENT HANDLER5
             running = False
 
     
     pygame.display.update()
+    clock.tick(fps) # uupdate the game "fps" times per second
 
 pygame.quit()

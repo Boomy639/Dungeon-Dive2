@@ -76,7 +76,7 @@ nav img{
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     text-decoration: underline;
-    filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+    filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
 }
 
 .text-box p{
@@ -122,7 +122,7 @@ html, body {
   }
   
   body {
-      background: linear-gradient(-45deg, #2e08b8, #8a09d4, #02ff9e);
+      background: linear-gradient(-45deg, #1d0574, #560485, #076e47);
       background-size: 400% 400%;
       animation: gradient 15s ease infinite;
   }
